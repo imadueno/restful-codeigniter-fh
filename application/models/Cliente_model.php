@@ -16,6 +16,7 @@ class Cliente_model extends CI_Model {
     public $direccion;
 
     public function get_cliente( $id ){
+
         $this->db->where(array('id' => $id,'activo' => 1));
         $query = $this->db->get('clientes');
         $row = $query->custom_row_object(0,'Cliente_model');
@@ -23,6 +24,7 @@ class Cliente_model extends CI_Model {
     }
 
     public function set_datos( $data_cruda ){
+
         foreach( $data_cruda as $nombre_campo => $valor_campo ){
             if( property_exists( 'Cliente_model', $nombre_campo  ) ){
                 $this->$nombre_campo = $valor_campo;
@@ -34,7 +36,6 @@ class Cliente_model extends CI_Model {
         }
 
         $this->nombre = strtoupper( $this->nombre );
-
         return $this;
     }
 
