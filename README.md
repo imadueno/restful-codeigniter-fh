@@ -43,3 +43,33 @@ Modificamos el array **db['default']** en los siguientes campos:
 'password' => '12345',
 'database' => 'clientes'
 ```
+## Cómo funciona
+En este caso, el framework nos ofrece muchas posibilidades para poder realizar diversos proyectos utilizando la tecnología MVC ( Modelo Vista Controlador ). En este proyecto en particular. Sólo haremos uso del controlador, para simplificar el código por hacer.
+
+#### Controlador
+El controlador es un archivo PHP que se debe crear dentro de la ruta:
+- /application/controllers/**Controllername.php**
+> Es importante que el nombre comience con mayuscula.
+
+Los controladores nos permitirán manipular las peticiones hechas por el usuario y hacer las validaciones o instrucciones necesarias para poder regresar la información que se necesite.
+
+#### Estructura de un controlador para utilizar RESTful
+```
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+require( APPPATH.'/libraries/REST_Controller.php');
+
+class Controllername extends REST_Controller {
+
+    public function __construct(){
+        parent::__construct();
+        $this->load->database();
+    }
+		
+		//Servicios aquí
+}
+```
+Es importante mantener esta estructura para poder hacer uso de la clase padre **REST_Controller** que nos facilitará en cierta forma la manera de poder manejar las peticiones hechas.
+
+#### Ejemplo de servicio
